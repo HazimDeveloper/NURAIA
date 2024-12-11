@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NURAIA - Healthcare Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(1rem, 3vw, 2rem);
+        }
+
+        .hero {
+            text-align: center;
+            padding: clamp(3rem, 6vw, 6rem) 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,244,255,0.9) 100%);
+            border-radius: 30px;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, #1a56db, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: #1a56db;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+            text-align: center;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a56db;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: clamp(180px, 30vw, 200px);
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .product-info h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: #1a56db;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #059669;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: clamp(2.5rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cost-breakdown {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin-top: 2rem;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .cost-total {
+            display: flex;
+            justify-content: space-between;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            font-weight: bold;
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+            color: #1a56db;
+            border-top: 2px solid #1a56db;
+            margin-top: 1rem;
+        }
+
+        .highlight {
+            background: #eef2ff;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #1e40af;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #1a56db, #4f46e5);
+            color: white;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 10px;
+            border: none;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .product-card, .feature-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            ul {
+                padding-left: 1.2rem !important;
+                font-size: 0.9rem;
+            }
+
+            .cost-item, .cost-total {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .product-card:hover, .feature-card:hover {
+                transform: none;
+            }
+        }
+
+        @media print {
+            .hero {
+                background: none;
+                padding: 2rem 0;
+            }
+
+            .product-card, .feature-card {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+
+            .button {
+                display: none;
+            }
+        }
+        .contact-section {
+    background: linear-gradient(135deg, #1a56db 0%, #4f46e5 100%);
+    color: white;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>NURAIA - Nurse AI Assistant</h1>
+            <p>Making Healthcare More Accessible with AI-Powered Bedside Assistance</p>
+        </section>
+
+        <section class="section">
+            <h2>Our Solutions</h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="basic.png" alt="NURAIA Basic" class="product-image" style="object-fit: contain;">
+                    <div class="product-info">
+                        <h3>NURAIA Basic</h3>
+                        <p>Perfect for individual hospital beds</p>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li>Voice Recognition</li>
+                            <li>Basic Medicine Dispensing</li>
+                            <li>Water Filter</li>
+                        </ul>
+                        <div class="price">RM 8,500</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="standard.png" alt="NURAIA Standard" class="product-image" style="object-fit: contain;">
+                    <div class="product-info">
+                        <h3>NURAIA Standard</h3>
+                        <p>Ideal for ward implementation</p>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li>Advanced AI Analysis</li>
+                            <li>Extended Medicine Storage</li>
+                            <li>Water Filtration System</li>
+                        </ul>
+                        <div class="price">RM 10,500</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="premium.png" alt="NURAIA Premium" class="product-image" style="object-fit: contain;">
+                    <div class="product-info">
+                        <h3>NURAIA Premium</h3>
+                        <p>Complete hospital solution</p>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li>Full Integration Suite</li>
+                            <li>Advanced Analytics</li>
+                            <li>Premium Support</li>
+                            <li>Extended warranty</li>
+                        </ul>
+                        <div class="price">RM 12,500</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                Bulk pricing available for orders of 5 or more units. Save up to 20%!
+            </div>
+
+            <div class="cost-breakdown">
+                <h3 style="margin-bottom: 1.5rem;">Cost Breakdown (Basic Model)</h3>
+                <div class="cost-item">
+                    <span>Hardware Components</span>
+                    <span>RM 2,000</span>
+                </div>
+                <div class="cost-item">
+                    <span>Medicine Dispensing System</span>
+                    <span>RM 1,600</span>
+                </div>
+                <div class="cost-item">
+                    <span>Water System</span>
+                    <span>RM 700</span>
+                </div>
+                <div class="cost-item">
+                    <span>AI Software License</span>
+                    <span>RM 1,000</span>
+                </div>
+                <div class="cost-item">
+                    <span>Assembly & Testing</span>
+                    <span>RM 500</span>
+                </div>
+                <div class="cost-total">
+                    <span>Manufacturing Cost</span>
+                    <span>RM 6,300</span>
+                </div>
+                <div class="cost-total">
+                    <span>Retail Price</span>
+                    <span>RM 8,500</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🎙️</div>
+                    <h3>Voice Recognition</h3>
+                    <p>Natural language processing for patient communication</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💊</div>
+                    <h3>Medicine Dispensing</h3>
+                    <p>Automated and accurate medicine distribution</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💧</div>
+                    <h3>Water System</h3>
+                    <p>Clean water dispenser for medicine consumption</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Usage tracking and inventory management</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Benefits</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>For Hospitals</h3>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>Reduce nurse workload</li>
+                        <li>Lower operational costs</li>
+                        <li>Improve patient care</li>
+                        <li>24/7 availability</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>For Patients</h3>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>Immediate assistance</li>
+                        <li>Reduced wait times</li>
+                        <li>Better care experience</li>
+                        <li>Easy medicine access</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>For Staff</h3>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>Less routine tasks</li>
+                        <li>Focus on critical care</li>
+                        <li>Reduced stress</li>
+                        <li>Better work environment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="section contact-section">
+        <h2 style="color: white; text-align: center;">Contact Our Team</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email Us</h3>
+                <p>Get in touch with our sales team</p>
+                <a href="mailto:hazim4128@gmail.com" class="contact-link">hazim4128@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Sales Support</h3>
+                <p>Learn more about bulk pricing and custom solutions</p>
+                <a href="mailto:hazim4128@gmail.com" class="contact-link">Contact Sales</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🔧</div>
+                <h3>Technical Support</h3>
+                <p>Need help with installation or maintenance?</p>
+                <a href="mailto:hazim4128@gmail.com" class="contact-link">Get Support</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p>Available 24/7 for healthcare facilities</p>
+            <p style="margin-top: 1rem;">Fast response time for urgent inquiries</p>
+        </div>
+    </section>
+    <footer>
+        <p>© 2024 NURAIA Healthcare Innovation. All rights reserved.</p>
+    </footer>
+</body>
+</html>
